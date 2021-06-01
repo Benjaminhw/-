@@ -1,0 +1,49 @@
+#include <iostream>
+#define pi 3.1415926
+
+using namespace std;
+
+int main()
+{
+    cout << "欢迎使用风量/风速计算器，本程序由BenjaminH进行编写"<<endl;
+    int m,n;
+    float Q=0;
+    float va=0;
+    cout<< "已知风速算风量，请按1，已知风量算风速，请按2"<<endl;
+    cin >>m;
+    if(m==1){
+    cout << "请输入数据个数" << endl;
+    while(scanf("%d",&n)!=EOF){
+    float v[n];
+    cout << "请输入风速（用空格隔开）" << endl;
+    for(int j=0;j<n;j++)
+        cin >> v[j];
+    float S,D;
+    cout << "请输入进风口直径(单位为mm)" << endl;
+    cin >> D;
+    for(int i=0;i<n;i++)
+        va=va+v[i];
+    va=va/n;
+    cout << "平均风速为:"<<va<< "m/s" <<endl;
+    D=D/1000;
+    Q=va*3600/4*pi*D*D;
+    cout << "风量为"<<Q<<"m3/h"<<endl;
+    Q=0;
+    va=0;
+    cout << "请输入数据个数" << endl;
+    }
+    }
+    else{
+    cout<< "请输入风量"<<endl;
+    while(scanf("%f",&Q)!=EOF){
+     float S,D;
+     cout << "请输入进风口直径（单位为mm）" <<endl;
+     cin >> D;
+     D=D/1000;
+     va=Q/(900*pi*D*D);
+     cout << "平均风速为:" << va << "m/s" <<endl;
+     cout << "请输入风量"<<endl;
+    }
+    }
+    return 0;
+}
